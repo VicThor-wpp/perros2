@@ -1,0 +1,51 @@
+Perros
+
+Sistema
+
+Edad - 30%
+	1. Joven 0-20
+	2. Adulto 21-50
+	3. Viejo 50-100
+
+Emoción - 20%
+	1. Enojado
+	2. Disgusto
+	3. Miedo
+	4. Feliz
+	5. Triste
+	6. Sorpresa
+	7. Neutral
+
+Raza - 20%
+	1. Asiatico
+	2. Negro
+	3. Indio
+	4. Latino
+	5. Oriente Proximo
+	6. Blanco
+
+
+Perros
+
+1. 	2-7-6
+2. 	2-2-3
+3. 	1-5-2
+4. 	2-6-5
+5. 	1-4-4
+6. 	3-5-2
+7. 	2-7-4
+8. 	2-2-2
+9. 	3-5-1
+10. 2-7-5
+11. 3-1-4
+12. 1-7-2
+13. 2-4-5
+14. 2-7-4
+15. 3-5-3
+16. 1-4-2
+17. 2-3-4
+18. 2-5-6
+19. 1-4-4
+20. 2-7-4
+21. 1-4-4
+22. 2-7-4

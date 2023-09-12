@@ -1,0 +1,849 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.gpu-acc {
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* ==================================================================
+3.0 Basic Styles
+================================================================== */
+
+/* 3.1 FullHeight Fix
+-------------------------------------------------------------- */
+html, body {
+    height: 100%;
+}
+
+body {
+    background: url("../../images/bg.jpg");
+    color: #FFF;
+    font-family: "Karla", sans-serif;
+    background-size: cover;
+}
+
+/* 3.2 Split Screen w/ vertical centering content
+-------------------------------------------------------------- */
+.split-wrapper, .split-container, .split-col {
+    height: 100%;
+}
+
+.split-container, .split-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/* 3.3 Column Left (Logo, Heading, Content, Download Buttons, Footer Credits)
+-------------------------------------------------------------- */
+.col-left .content {
+    max-width: 480px;
+    margin: 0 2rem;
+}
+
+.dl-wrapper {
+    margin-top: 2em;
+    white-space: nowrap; /* Remove this if you add more than two buttons */
+}
+
+.dl-btn {
+    display: inline-block;
+    margin-right: 0.25rem;
+}
+
+.dl-wrapper img {
+    height: 48px;
+}
+
+h1 {
+    font-size: 1.618em;
+    line-height: 1.25;
+    margin: 1.25em 0 0.625em;
+}
+
+p {
+    font-size: 1em;
+    line-height: 2;
+    margin: 0;
+}
+
+.credits-info {
+    padding-top: 2rem;
+}
+
+.credits-info p {
+    color: #989898;
+}
+
+.credits-info a {
+    color: #989898;
+}
+
+.credits-info a:hover {
+    color: #75d4da;
+}
+
+.social-links {
+  margin: 0;
+  padding: 2.5em 0 0;
+}
+
+.social-links li {
+    position: relative;
+    display: inline;
+    padding-bottom: 0.1875em;
+    margin-right: 0.75em;
+}
+
+.social-links li a {
+    color: #989898;
+    text-decoration: none;
+    -webkit-transition: color 0.35s;
+    -moz-transition: color 0.35s;
+    -ms-transition: color 0.35s;
+    -o-transition: color 0.35s;
+    transition: color 0.35s;
+    cursor: pointer;
+}
+
+.social-links li a:hover {
+    color: #75d4da;
+}
+
+.logo-container img {
+  display: block;
+}
+
+/* 3.4 Column Right (Mobile Mockup, Screenshot slider)
+-------------------------------------------------------------- */
+.col-right .content {
+    margin: 0 2rem;
+}
+
+.android-mockup {
+    position: relative;
+    width: 320px;
+    height: 636px;
+    background: url("../../images/android-bg-white.png") no-repeat left top transparent;
+    background-size: contain;
+}
+
+.ios-mockup {
+    position: relative;
+    width: 320px;
+    height: 644px;
+    background: url("../../images/ios-bg-white.png") no-repeat left top transparent;
+    background-size: contain;
+}
+
+.drop-shadow {
+    filter: drop-shadow(0px 10px 14px rgba(0,0,0,0.36));
+    -webkit-filter: drop-shadow(0px 10px 14px rgba(0,0,0,0.36));
+    -moz-filter: drop-shadow(0px 10px 14px rgba(0,0,0,0.36));
+}
+
+.swiper-container {
+    position: absolute;
+    left: 16px;
+    top: 54px;
+    width: 289px;
+    height: 512px;
+}
+
+.ios-mockup .swiper-container {
+    left: 18px;
+    top: 71px;
+    width: 285px;
+    height: 501px;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* ==================================================================
+4.0 Header
+================================================================== */
+
+.header-container {
+    margin: 70px 0px;
+    position: fixed; /* Fija el encabezado en la parte superior de la ventana */
+    width: calc(100% - 300px); /* Ancho del 100% menos 300px de márgenes laterales */
+    left: 150px; /* Margen izquierdo de 150px */
+}
+
+header {
+    background-color: transparent;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.logo {
+    flex: 1;
+    text-align: left;
+    width: 200px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.logo2 img {
+    width: 50px;
+}
+
+
+.menu {
+    flex: 2;
+    text-align: center;
+}
+
+.logo2 {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+a.galeria{
+    color: #FFFFFF;
+    margin-top: 15px;
+}
+
+.resultado .centered-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    width: 500px;
+    line-height: 25px;
+}
+
+
+form {
+    text-align: center;
+    margin-top: 50px;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.container {
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para la fila y columnas */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    position: relative;
+    margin: 0 10px; /* Espacio entre las columnas */
+}
+
+/* Estilos para las imágenes circulares */
+.circular-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Estilos para las imágenes */
+.circular-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la relación de aspecto y recorta la imagen */
+    object-position: center center; /* Centra la imagen en el contenedor circular */
+}
+
+/* Estilos para ajustar la superposición */
+.column:first-child .circular-image {
+    margin-right: -30px; /* Ajusta el valor según sea necesario */
+}
+
+.column:last-child .circular-image {
+    margin-left: -30px; /* Ajusta el valor según sea necesario */
+}
+
+
+.container-comparacion {
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Estilos para las imágenes circulares */
+.circular-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px;
+}
+
+/* Estilos para la imagen de la izquierda */
+.left-image {
+    position: relative;
+    left: -20px; /* Ajusta el valor según sea necesario para la superposición */
+}
+
+
+/* Estilos para el footer */
+footer {
+    background-color: #000000ad;
+    color: white;
+    text-align: center;
+    padding: 3px 10px 7px 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+h2{
+    margin-bottom: 8px;
+}
+
+
+
+/* Estilos para los íconos de redes sociales */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid white;
+  }
+  .button:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 10rem;
+    z-index: -2;
+  }
+  .button:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #008fb3;
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+  }
+  .button:hover {
+    color: #fff;
+  }
+  .button:hover:before {
+    width: 100%;
+  }
+
+  /* Estilos para el menú hamburguesa */
+.menu-toggle {
+    cursor: pointer;
+    display: none;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#imageUpload {
+    display: none; /* Ocultar el input original */
+}
+
+.custom-upload {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #ae12ab;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el icono de subida */
+.upload-icon {
+    width: 80px;
+    height: 60px;
+    background-image: url(../../images/icono-subida.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+/* Estilos para ocultar el texto del input */
+#imageUpload::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+
+/* Estilos para la miniatura */
+.thumbnail {
+    max-width: 300px;
+    max-height: 300px;
+    margin-top: 20px;
+}
+
+
+/* Estilos para el contenido principal */
+.content {
+    padding: 20px;
+}
+
+.centered-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Esto centra la sección verticalmente en la ventana */
+}
+
+.centered-section img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.centered-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.centered-section button {
+    background-color: #ae12ab;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 25px;
+}
+
+.centered-section button:hover {
+    background-color: #222; /* Cambia de color al pasar el cursor sobre el botón */
+}
+
+.disabled {
+    background-color: #382f38ba!important;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 25px;
+}
+
+.custom-upload{
+    background-size: cover;
+    background-position: center center;
+}
+
+
+
+ /* Estilos para la grilla de imágenes */
+ .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Columnas automáticas */
+    grid-gap: 20px; /* Espacio entre las imágenes */
+}
+
+/* Estilos para las imágenes */
+.image-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease; /* Transición de zoom al pasar el mouse */
+}
+
+.image-item:hover img {
+    transform: scale(1.1); /* Zoom al pasar el mouse */
+}
+
+.image-grid {
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas en dispositivos de escritorio */
+    width: 90%;
+    margin: 25px auto;
+}
+
+hr{
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    width: 100%;
+    border: 0.1em solid #313131;
+}
+
+.image-grid a{
+    background-color: #ae12ab;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 25px;
+    display: block;
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    text-decoration: none;
+}
+
+ /* Estilos para el div de superposición */
+ .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease;
+}
+
+/* Estilos para el texto y el botón en la superposición */
+.overlay-content {
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.overlay-content button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ==================================================================
+4.0 Responsive Styles
+================================================================== */
+@media only screen and (max-width: 1408px) {
+    .ios-mockup {
+        width: 298px;
+        height: 600px;
+    }
+
+    .android-mockup {
+        width: 302px;
+        height: 600px;
+    }
+
+    .swiper-container {
+        left: 15px;
+        top: 51px;
+        width: 273px;
+        height: 485px;
+    }
+
+    .ios-mockup .swiper-container {
+        left: 17px;
+        top: 66px;
+        width: 265px;
+        height: 466px;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    html, body {
+    }
+
+    .split-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .split-col {
+        padding: 4rem 1.5rem;
+        width: 100%;
+    }
+
+    .col-left .content {
+        margin: 0;
+    }
+
+    .col-right {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .col-right .content {
+      margin: 0;
+  }
+
+  .header-container{
+    width: 100%;
+    margin: 0;
+    position: relative;
+    left: 0;
+    border-radius: 0;
+  }
+
+  header{
+    border-radius: 0;;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000e3;
+    width: 100%;
+    padding: 85px 0 0 0;
+    height: 100vh;
+    z-index: 9;
+}
+
+.menu.active {
+    display: flex;
+}
+
+.menu a {
+    color: white;
+    font-size: 20px;
+}
+
+.menu-toggle{
+    display: block;
+    z-index: 9999;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.logo2{
+    display: none;
+}
+
+header{
+    padding: 14px 50px;
+}
+
+.menu li {
+    margin-right: 20px;
+    border-bottom: 1px solid #4c4c4c;
+    padding: 8px;
+}
+
+.menu a {
+    color: white;
+}
+
+.ios-mockup .swiper-container {
+    left: 17px;
+    top: 0px;
+    width: 265px;
+    height: 200px;
+}
+
+.centered-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: calc(100vh - 130px);
+}
+
+.centered-section img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0px;
+}
+
+.centered-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 24px;
+    width: 80%;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.logo-inner{
+    width: 70%;
+    margin-bottom: 20px!important;
+}
+
+.resultado p{
+    font-size: 14px;
+    line-height: 18px;
+}
+
+a.galeria{
+    color: #FFFFFF;
+    margin-top: 15px;
+}
+
+
+
+.resultado .centered-section p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    width: 100%;
+    line-height: 18px;
+}
+
+.image-grid {
+    grid-template-columns: 1fr; /* Una columna en dispositivos móviles */
+}
+
+.logo-galeria{
+    width: 50%;
+}
+
+}
