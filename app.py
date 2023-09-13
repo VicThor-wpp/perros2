@@ -67,6 +67,7 @@ def index():
             19: (1, 4, 6, 'Aaron', '3 meses. Va a ser un perro grande. Es muy juguetón y mimoso. Le gusta estár a upa.'),
             20: (2, 7, 6, 'Kala', 'Galga, abandonada. Fue abandonada en el portón con un cable en la garganta. Camina, pero no corre por distensión en sus patitas traseras. Es muy cariñosa, juguetona y dulce.')
             }
+        
         attributes = extract_attributes(result[0])
         print(attributes)
         most_similar_dog_id = compare(attributes, dogs)
