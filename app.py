@@ -1,50 +1,120 @@
+# Import necessary libraries and modules
 from flask import Flask, render_template, request, redirect, url_for
 from deepface import DeepFace
+from PIL import Image
+from datetime import datetime
 import random
 import os
 
+# Initialize Flask app
 app = Flask(__name__)
+# Set the upload folder for images
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
+# Define categories for age, emotion, and race
 CATEGORIES = {
     'age': {1: 'young', 2: 'adult', 3: 'old'},
     'emotion': {1: 'angry', 2: 'disgust', 3: 'fear', 4: 'happy', 5: 'sad', 6: 'surprise', 7: 'neutral'},
     'race': {1: 'asian', 2: 'black', 3: 'indian', 4: 'latino hispanic', 5: 'middle eastern', 6: 'white'}
 }
 
+# Define weights for each category
 WEIGHTS = {'age': 0.35, 'emotion': 0.40, 'race': 0.25}
 
+# Function to extract attributes from DeepFace result
 def extract_attributes(result):
     print(result)
     return (
+        # Get index of age category based on age value
         list(CATEGORIES['age'].values()).index("young" if result["age"] <= 20 else ("adult" if result["age"] <= 50 else "old")) + 1,
+        # Get index of dominant emotion category
         list(CATEGORIES['emotion'].values()).index(result['dominant_emotion']) + 1,
+        # Get index of dominant race category
         list(CATEGORIES['race'].values()).index(result["dominant_race"]) + 1
     )
 
+# Function to compare user's attributes with dogs' attributes
 def compare(attributes, dogs):
+    # Calculate similarities between user's attributes and dogs' attributes
     similarities = [
         (
             dog_id, 
+            # Calculate the weighted sum of squared differences for each attribute
             sum(((dog[i] - attributes[i]) ** 2) * WEIGHTS[attr] for i, attr in enumerate(WEIGHTS))
         )
         for dog_id, dog in dogs.items()
     ]
+    # Find the minimum similarity score
     min_score = min(similarities, key=lambda x: x[1])[1]
     print(min_score)
+    # Return a random dog ID with the minimum similarity score
     return random.choice([dog_id for dog_id, score in similarities if score == min_score])
 
+# Function to resize and compress an image from a given path
+def resize_and_compress_image_from_path(image_path):
+    # Open the image
+    img = Image.open(image_path)
+
+    # Calculate the aspect ratio
+    aspect_ratio = img.width / img.height
+    
+    # Determine new dimensions while maintaining aspect ratio
+    if img.width > img.height:
+        new_width = 500
+        new_height = int(500 / aspect_ratio)
+    else:
+        new_height = 500
+        new_width = int(500 * aspect_ratio)
+
+    # Resize the image using the LANCZOS filter
+    img = img.resize((new_width, new_height), Image.LANCZOS)
+
+    # Save the image with compression
+    img.save(image_path, "JPEG", quality=75)
+
+# Function to generate a new filename for an image based on its dimensions and current timestamp
+def generate_new_filename(image_path):
+    # Open the image to fetch its dimensions
+    img = Image.open(image_path)
+    width, height = img.size
+
+    # Get the current timestamp
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')  # Produces format like "20230913170550"
+    
+    # Combine the timestamp and dimensions to generate the new filename
+    new_filename = f"{timestamp}_{width}x{height}.jpg"
+    
+    return new_filename
+
+# Define the index route for the Flask app
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # Check if the request method is POST
     if request.method == 'POST':
+        # Check if there's no file in the request or if the filename is empty
         if 'file' not in request.files or request.files['file'].filename == '':
             return redirect(request.url)
 
+        # Get the uploaded file from the request
         file = request.files['file']
+        # Save the file to the upload folder with its original filename
         filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filename)
-        result = DeepFace.analyze(filename)
 
+        # Resize and compress the saved image
+        resize_and_compress_image_from_path(filename)
+
+        # Generate a new filename
+        new_filename = generate_new_filename(filename)
+        new_filepath = os.path.join(app.config['UPLOAD_FOLDER'], new_filename)
+
+        # Rename the file
+        os.rename(filename, new_filepath)
+
+        # Analyze the image using DeepFace
+        result = DeepFace.analyze(new_filepath)
+
+        # Define the dogs data (ID, attributes, name, description)
         dogs = {
             1: (2, 4, 2, 'Chabella', 'Un año y medio. Castrada. Fue abandonada en el portón del refugio cuando era cachorra. Busca hogar donde la llenen de mimos y amor.'),
             2: (2, 2, 5, 'Polo', 'Es adulto jóven y está castrado. 50% fila, 50% gran danés. 100% cariñoso.'),
@@ -68,22 +138,28 @@ def index():
             20: (2, 7, 6, 'Kala', 'Galga, abandonada. Fue abandonada en el portón con un cable en la garganta. Camina, pero no corre por distensión en sus patitas traseras. Es muy cariñosa, juguetona y dulce.')
             }
         
+        # Extract attributes from the DeepFace result
         attributes = extract_attributes(result[0])
         print(attributes)
+        # Find the most similar dog ID based on the attributes
         most_similar_dog_id = compare(attributes, dogs)
         print(most_similar_dog_id)
+        # Get the most similar dog's data
         most_similar_dog = dogs[most_similar_dog_id]
         print(most_similar_dog)
 
+        # Render the result template with the uploaded image URL, dog image URL, dog name, and dog description
         return render_template(
             'resultado.html', 
-            uploaded_img_url = url_for('static', filename=f'uploads/{file.filename}'),
+            uploaded_img_url = url_for('static', filename=f'uploads/{new_filename}'),
             dog_img_url = url_for('static', filename=f'perritos/{most_similar_dog_id}.jpg'),
             dog_name=most_similar_dog[3], 
             dog_description=most_similar_dog[4]
         )
 
+    # If the request method is not POST, render the upload template
     return render_template('upload.html')
 
+# Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False)    
