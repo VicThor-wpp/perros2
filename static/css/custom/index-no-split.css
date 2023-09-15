@@ -337,7 +337,7 @@ display: inline-flex;
 header {
     background-color: transparent;
     color: #FFFFFF;
-    display: flex;background-color: #68cad1;
+    display: flex;
     padding: 5px 50px;
     border-radius: 25px;
     box-sizing: border-box;
@@ -709,10 +709,10 @@ body.contacto .menu a {
     border-radius: 25px;
 }
 
-.custom-upload{
-    background-size: cover;
-    background-position: center center;
-}
+
+
+
+
 
 
 
@@ -897,8 +897,7 @@ Pagina de perro
 
 .objetosanimados #estrellaw{
     position: fixed;
-    right: -10px;
-    top: 200px;
+
     width: 120px;
     transition: 0.70s;
     -webkit-transition: 0.70s;
@@ -964,14 +963,6 @@ Pagina de perro
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
 }
-
-
-
-
-
-
-
-
 
 @font-face {
     font-family: 'Barrio';
@@ -1044,8 +1035,12 @@ Pagina de perro
         padding-right: 0;
     }
 }
-
-
+@media only screen and (min-width: 838px) {  
+    
+    body.contacto .header-container{
+        position: absolute;
+        }
+}
 @media only screen and (max-width: 480px) {  
   a.button {
     max-width: 250px;
