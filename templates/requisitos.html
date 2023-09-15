@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body_class %}resultado{% endblock %}
+
+{% block content %}
+
+    <div id="requisitos">
+
+        <h1>Requisitos para una adopción responsable</h1>
+        
+        <p><img src="{{url_for('static', filename='images/patita.png')}}">El primer paso para adoptar en Animal Help es comprometerte a proveer al perro de vacunas, asistencia veterinaria cuando se requiera, velar por su salud física y psicológica, respetar su  vida (no sometiendolo a stress ni angustia) y brindarle alimentación de calidad y agua en cantidad suficiente. Si el perro tiene menos de 6 meses, también deberás castrarlo.</p>
+
+        <p><img src="{{url_for('static', filename='images/patita.png')}}">Adoptar es un compromiso a largo plazo y una gran responsabilidad. Si estás de acuerdo con asumir ese compromiso, comenzá oficialmente el proceso de adopción comunicándote al  094 676 181.</p>
+        
+        <p><img src="{{url_for('static', filename='images/patita.png')}}">Te pediremos tu identificación completa y luego, deberás completar el formulario de adopción. 
+        A la hora de adoptar, deberás traer un recibo de UTE, Antel u OSE, como constancia de domicilio.</p>
+        
+        <p><img src="{{url_for('static', filename='images/patita.png')}}">Por último realizaremos un seguimiento de la adopción, que constará del envío de fotos y videos como actualización de la adopción.</p>
+        
+        <p><img src="{{url_for('static', filename='images/patita.png')}}">Estos pasos, si bien extensos, son la única forma de garantizar que todos los perros den con un hogar responsable y cariñoso, como el tuyo.</p>
+
+    </div>
+
+{% endblock %}

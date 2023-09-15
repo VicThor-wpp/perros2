@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block body_class %}contacto{% endblock %}
+
+{% block content %}
+
+    <div id="contenedorcontacto">
+
+        <div class="formulariocontacto">
+            <p>A continuación llena los campos de este formulario para contactarnos y comenzar con el proceso de adopción.</p>
+
+            <form action="https://script.google.com/macros/s/AKfycbwMBTxK4WqW_zAMyiyQqQpWUs-ts0PKpjguGmOLg4271oQ3DR5EPaeLoaR_-NHgokFt/exec" method="post" id="adoptionForm">
+            <div class="camposform">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="camposform">
+                <label for="lastname">Apellido:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            
+            <div class="camposform">
+                <label for="city">Ciudad:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="camposform">
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{9}" required>
+            </div>
+
+            <div class="camposform">
+                <label for="dogNameInput">Nombre del perro:</label>
+                <input type="text" id="dogNameInput" name="dogName" class="dogNameInput" required>
+            </div>            
+
+            <div class="camposform">
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+
+        <p><strong>Teléfono de contacto:</strong> </br>Mary Brown - Animal Help,<a href="tel:+59894767181"> +59894767181</a></p>
+        </div> 
+
+        
+
+        <div class="mapa">
+            <iframe src="https://snazzymaps.com/embed/524076" width="100%" height="100%" style="border:none;"></iframe>
+        </div> 
+
+    </div> 
+
+
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{url_for('static', filename='js/contacto.js')}}"></script>
+{% endblock %}

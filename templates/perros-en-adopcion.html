@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body_class %}resultado{% endblock %}
+
+{% block content %}
+
+<div class="centered-section">
+    <img src="{{url_for('static', filename='images/logo.png')}}" alt="Se busca humano" class="logo-galeria">
+</div>
+
+    <!-- Grilla de perros -->
+    <div class="image-grid"></div> 
+
+    {% endblock %}
+    
+    {% block scripts_extra %}
+    <script src="{{url_for('static', filename='js/cargar-perros.js')}}"></script>
+    {% endblock %}
+
+

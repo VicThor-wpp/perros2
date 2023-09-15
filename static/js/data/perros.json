@@ -1,0 +1,103 @@
+[
+    {
+      "nombre": "Chabella",
+      "descripcion": "Un año y medio. Castrada. Fue abandonada en el portón del refugio cuando era cachorra. Busca hogar donde la llenen de mimos y amor.",
+      "imagen": "1.jpg"
+    },
+    {
+      "nombre": "Polo",
+      "descripcion": "Es adulto jóven y está castrado. 50% fila, 50% gran danés. 100% cariñoso.",
+      "imagen": "2.jpg"
+    },
+    {
+      "nombre": "Colita",
+      "descripcion": "Huérfano. Su dueño falleció y buscaban eutanaziarlo. Pero logramos salvarlo. Está castrado, es tímido pero tiene un corazón de oro. Es el perro más bueno del refugio.",
+      "imagen": "3.jpg"
+    },
+    {
+      "nombre": "Barby",
+      "descripcion": "Lo que tiene de rescatado lo tiene de amoroso. Es un perro muy alegre y juguetón.",
+      "imagen": "4.jpg"
+    },
+    {
+      "nombre": "Rubia",
+      "descripcion": "Castrada. Es una perra tímida pero extremadamente cariñosa. Es guardiana y muy mimosa.",
+      "imagen": "5.jpg"
+    },
+    {
+      "nombre": "Panther",
+      "descripcion": "Jóven cruza con labrador. Amorosa, sociable y cariñosa; la opción perfecta para cualquier hogar que quiera dar amor.",
+      "imagen": "6.jpg"
+    },
+    {
+      "nombre": "Chocolate",
+      "descripcion": "Anciana castrada. Es muy amorosa, tierna y mimosa.",
+      "imagen": "7.jpg"
+    },
+    {
+      "nombre": "Tigresa",
+      "descripcion": "Cachorra de 6 meses, próxima a ser castrada. Juguetona, mimosa y buena, va a ser una perra de tamaño mediano pero con un corazón enorme.",
+      "imagen": "8.jpg"
+    },
+    {
+      "nombre": "Yessy",
+      "descripcion": "Cuando llegó al refugio tenía la columna fracturada. Hoy en día está castrada y recuperada. Amorosa y tierna.",
+      "imagen": "9.jpg"
+    },
+    {
+      "nombre": "Lobita",
+      "descripcion": "Fue rescatada con una fractura en su columna. Luego de 6 meses luchando, volvió a caminar. Castrada, cariñosa y amante de estar dentro de casa.",
+      "imagen": "10.jpg"
+    },
+    {
+      "nombre": "Milly",
+      "descripcion": "Jóven, castrada. Es cruza con weimeraner. Mediana, amorosa y cariñosa con todos, menos con los gatos.",
+      "imagen": "11.jpg"
+    },
+    {
+      "nombre": "Slowy",
+      "descripcion": "Macho, muy guardián. Es bueno, amigable y de tamaño mediano.",
+      "imagen": "12.jpg"
+    },
+    {
+      "nombre": "Dexter",
+      "descripcion": "Cachorro, 4 meses. Es cariñoso a niveles extremos. El más bueno de todos.",
+      "imagen": "13.jpg"
+    },
+    {
+      "nombre": "Preto",
+      "descripcion": "Castrado, cruza con pitbull. Tuvo un accidente y perdió un brazo. Mimoso pero garronero con quienes no conoce.",
+      "imagen": "14.jpg"
+    },
+    {
+      "nombre": "Mi nena",
+      "descripcion": "Rescatada de cachorra, castrada. Le encanta dar besos y jugar. Súper cariñosa.",
+      "imagen": "15.jpg"
+    },
+    {
+      "nombre": "Rubia",
+      "descripcion": "Cachorra, próxima a ser castrada. Muy cariñosa e ingeniosa. Le encantan las siestas al sol.",
+      "imagen": "16.jpg"
+    },
+    {
+      "nombre": "Galy",
+      "descripcion": "Galga, castrada. Es una perra muy tímida y miedosa, tuvo un pasado difícil pero hoy en día tiene muchísimo amor para dar. Es buena, dulce y compañera.",
+      "imagen": "17.jpg"
+    },
+    {
+      "nombre": "Guismu",
+      "descripcion": "Cachorro macho, dos meses y medio. Es muy tímido, muy dulce y muy amoroso. Y es cruza con shitzu.",
+      "imagen": "18.jpg"
+    },
+    {
+      "nombre": "Aaron",
+      "descripcion": "3 meses. Va a ser un perro grande. Es muy juguetón y mimoso. Le gusta estár a upa.",
+      "imagen": "19.jpg"
+    },
+    {
+      "nombre": "Kala",
+      "descripcion": "Galga, abandonada. Fue abandonada en el portón con un cable en la garganta. Camina, pero no corre por distensión en sus patitas traseras. Es muy cariñosa, juguetona y dulce.",
+      "imagen": "20.jpg"
+    }
+]
+  

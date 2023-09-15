@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body_class %}resultado{% endblock %}
+
+{% block content %}
+
+<div id="requisitos">
+
+    <h3>Animal Help Uruguay es una ONG no estatal que se sustenta de las donaciones de las personas interesadas en ayudar a los más de 200 animales que viven en el refugio.</h3>
+    <p>Si querés ayudar, podés hacerlo a través de estos medios:</p>
+
+    <p><img src="{{url_for('static', filename='images/patita.png')}}">Abitab: Colectivo Animal Help 10.605</p>
+    <p><img src="{{url_for('static', filename='images/patita.png')}}">Red pagos: Colectivo Animal Help 30.946</p>
+    <p><img src="{{url_for('static', filename='images/patita.png')}}">Mi Dinero: 14732586 – para transferir Cuenta 6500847</p>
+    <p><img src="{{url_for('static', filename='images/patita.png')}}">Brou C.A. pesos $U 000296849-00002</p>
+    <p><img src="{{url_for('static', filename='images/patita.png')}}">Brou C.A. dólares US$ 000296849-00001</p>
+    <p><img src="{{url_for('static', filename='images/patita.png')}}">Teléfono de contacto: 094767181, Mary Brown</p>
+
+</div>
+
+
+    {% endblock %}

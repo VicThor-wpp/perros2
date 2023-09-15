@@ -26,8 +26,30 @@
         <!-- Dog description and adoption call-to-action -->
         <h2>¡Tu mascota ideal es {{ dog_name }}!</h2>
         <p>{{ dog_description }}</p>
-        <button>Adoptalo</button>
+        <div id="contenedoradoptalo"></div>
         <a href="galeria.html" class="galeria">Mirá todos los perros en adopción</a>
     </div>
 </div>
+{% endblock %}
+{% block scripts_extra %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const contenedoradoptalo = document.getElementById("contenedoradoptalo");
+    
+        const botonadoptalo = document.createElement('a');
+        botonadoptalo.href = 'contacto';
+        botonadoptalo.className = 'button';
+        botonadoptalo.textContent = "Adoptalo";
+    
+        // Inicializamos el nombre del perro utilizando el sistema de plantillas de Jinja
+        const dogName = "{{ dog_name }}";
+    
+        // Add event listener to the link to save dog's name to local storage
+        botonadoptalo.addEventListener("click", (e) => {
+            localStorage.setItem("selectedDogName", dogName);
+        });
+    
+        contenedoradoptalo.appendChild(botonadoptalo);
+    });
+</script>
 {% endblock %}

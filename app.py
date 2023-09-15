@@ -87,8 +87,33 @@ def generate_new_filename(image_path):
     return new_filename
 
 # Define the index route for the Flask app
-@app.route('/', methods=['GET', 'POST'])
-def index():
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/colabora')
+def colabora():
+    return render_template('colabora.html')
+
+@app.route('/perros-en-adopcion')
+def adopcion():
+    return render_template('perros-en-adopcion.html')
+
+@app.route('/requisitos')
+def requisitos():
+    return render_template('requisitos.html')
+
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
+@app.route('/vermas')
+def vermas():
+    return render_template('vermas.html')
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
     # Check if the request method is POST
     if request.method == 'POST':
         # Check if there's no file in the request or if the filename is empty
@@ -162,4 +187,4 @@ def index():
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=False)    
+    app.run(debug=True)    

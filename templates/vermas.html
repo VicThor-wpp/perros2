@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body_class %}requisitos{% endblock %}
+
+
+
+{% block content %}
+
+    <div id="vermas">
+        <div class="dog-info-container"></div>
+    </div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{url_for('static', filename='js/vermas.js')}}"></script>
+{% endblock %}
