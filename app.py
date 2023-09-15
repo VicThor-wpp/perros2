@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from deepface import DeepFace
 from PIL import Image
 from datetime import datetime
+import pyheif
 import random
 import os
 
@@ -52,8 +53,20 @@ def compare(attributes, dogs):
 
 # Function to resize and compress an image from a given path
 def resize_and_compress_image_from_path(image_path):
-    # Open the image
-    img = Image.open(image_path)
+    # Check if the image is in .heic format
+    if image_path.lower().endswith(".heic"):
+        heif_file = pyheif.read(image_path)
+        img = Image.frombytes(
+            heif_file.mode, 
+            (heif_file.width, heif_file.height),
+            heif_file.data,
+            "raw",
+            heif_file.mode,
+            heif_file.stride,
+        )
+    else:
+        # Open the image with Pillow
+        img = Image.open(image_path)
 
     # Calculate the aspect ratio
     aspect_ratio = img.width / img.height
@@ -187,4 +200,4 @@ def upload():
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True)    
+    app.run(debug=False)    
