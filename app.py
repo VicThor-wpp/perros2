@@ -84,20 +84,6 @@ def resize_and_compress_image_from_path(image_path):
         # Open the image with Pillow
         img = Image.open(image_path)
 
-    # Calculate the aspect ratio
-    aspect_ratio = img.width / img.height
-    
-    # Determine new dimensions while maintaining aspect ratio
-    if img.width > img.height:
-        new_width = 500
-        new_height = int(500 / aspect_ratio)
-    else:
-        new_height = 500
-        new_width = int(500 * aspect_ratio)
-
-    # Resize the image using the LANCZOS filter
-    img = img.resize((new_width, new_height), Image.LANCZOS)
-
     # Save the image with compression
     img.save(image_path, "JPEG", quality=75)
 
