@@ -51,9 +51,19 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-size: cover;
     
-    padding: 0 0 20% 0;
+    
 }
 
+body.adopcion {
+    height: auto!important;
+}
+body.adopcion .centered-section img {
+    margin-top: 0!important;
+}
+
+body.upload .centered-section img {
+    margin-top: 0!important;
+}
 /* 3.2 Split Screen w/ vertical centering content
 -------------------------------------------------------------- */
 .split-wrapper, .split-container, .split-col {
@@ -316,14 +326,12 @@ display: inline-flex;
 }
 
 
-
-
 /* ==================================================================
 4.0 Header
 ================================================================== */
 
 .header-container {
-    margin: 30px 0px 30px 0px;
+    padding: 30px 0px 30px 0px;
     width: 100%;
 }
 
@@ -746,7 +754,8 @@ body.contacto .menu a {
 .image-grid {
     grid-template-columns: repeat(4, 1fr);
     width: 70%;
-    margin: 0% 15% 15% 15%;
+    margin: 10% 15% 0% 15%;
+    padding-bottom: 10%;
 }
 
 #loader{
@@ -918,7 +927,7 @@ Pagina de perro
 
 .objetosanimados #estrellamarilla{
     position: fixed;
-    left: 300px;
+    left: 15px;
     top: 400px;
     width: 180px;
     transition: 0.70s;
@@ -1045,11 +1054,6 @@ Pagina de perro
     }
 }
 
-@media only screen and (max-width: 834px) {
-    body {
-        height: auto;
-    }
-}
 
 @media only screen and (max-width: 480px) {  
   a.button {
@@ -1100,7 +1104,6 @@ Pagina de perro
     max-width: 230px;
   }  
   #contenedorcontacto, .centered-section{
-    margin-top: 20%;
   }
 
   body.index .centered-section {
@@ -1254,6 +1257,7 @@ a.galeria{
 
 .image-grid {
     grid-template-columns: 1fr; /* Una columna en dispositivos móviles */
+    margin: 30% 15% 15% 15%;
 }
 
 .logo-galeria{
