@@ -52,13 +52,16 @@ def compare(attributes, dogs):
     return random.choice([dog_id for dog_id, score in similarities if score == min_score])
 
 # Function to resize and compress an image from a given path
+from PIL import Image
+import pyheif
+
 def resize_and_compress_image_from_path(image_path):
     # Check if the image is in .heic format
     if image_path.lower().endswith(".heic"):
         heif_file = pyheif.read(image_path)
         img = Image.frombytes(
             heif_file.mode, 
-            (heif_file.width, heif_file.height),
+            heif_file.size,
             heif_file.data,
             "raw",
             heif_file.mode,
