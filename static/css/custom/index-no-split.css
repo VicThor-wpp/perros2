@@ -405,6 +405,9 @@ a.galeria{
 form {
     text-align: center;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 label {
@@ -468,9 +471,7 @@ label {
 .circular-image {
     width: 180px;
     height: 180px;
-    border-radius: 50%;
     overflow: hidden;
-    margin: 10px;
 }
 
 /* Estilos para la imagen de la izquierda */
@@ -628,6 +629,7 @@ body.contacto .menu a {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: cover;
 }
 
 
@@ -1061,7 +1063,7 @@ Pagina de perro
     display: none;
   }
   img.imagenhumanoperro{
-    width: 70vw;
+    width: 85vw;
   }
   .objetosanimados{
     display: none;
@@ -1083,6 +1085,7 @@ Pagina de perro
   #vermas {
     height: auto;
     padding: 10% 10% 30% 10%;
+    background-color: #69cad1;
   }
   .dog-info-container{
     flex-direction: column;
