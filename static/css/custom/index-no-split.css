@@ -50,6 +50,8 @@ body {
     color: #FFF;
     font-family: 'Montserrat', sans-serif;
     background-size: cover;
+    
+    padding: 0 0 20% 0;
 }
 
 /* 3.2 Split Screen w/ vertical centering content
@@ -240,7 +242,7 @@ body.contacto .header-container{
 
 .camposform label{
     margin-bottom: 5px;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .camposform input, .camposform select{
@@ -626,6 +628,7 @@ body.contacto .menu a {
     align-items: center;
 }
 
+
 /* Estilos para el icono de subida */
 .upload-icon {
     width: 80px;
@@ -743,7 +746,7 @@ body.contacto .menu a {
 .image-grid {
     grid-template-columns: repeat(4, 1fr);
     width: 70%;
-    margin: 15% 15% 15% 15%;
+    margin: 0% 15% 15% 15%;
 }
 
 #loader{
@@ -869,7 +872,7 @@ Pagina de perro
     display: inline-block;
     width: 100%; 
     height: 10px;
-    background-image: url(/static/images/lineatop.png);
+    background-image: url(/images/lineatop.png);
     background-size: contain;  
     background-repeat: no-repeat;
 }
@@ -879,7 +882,7 @@ Pagina de perro
     display: inline-block;
     width: 100%; 
     height: 10px;
-    background-image: url(/static/images/lineabottom.png);
+    background-image: url(/images/lineabottom.png);
     background-size: contain;  
     background-repeat: no-repeat;
 }
@@ -1018,8 +1021,6 @@ Pagina de perro
 }
 
 @media only screen and (max-width: 1023px) {
-    html, body {
-    }
 
     .split-container {
         -webkit-box-orient: vertical;
@@ -1044,7 +1045,33 @@ Pagina de perro
     }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 834px) {
+    body {
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 480px) {  
+  a.button {
+    max-width: 250px;
+  }  
+  .custom-upload {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }      
+  img.imagenhumanoperro{
+    width: 70vw;
+  }
+  .objetosanimados{
+    display: none;
+  }
+  img.imagenhumanoperro{
+    width: 70vw;
+  }
+  .objetosanimados{
+    display: none;
+  }
   ul.menu.active a {
     color: #ffffff;
   }
@@ -1079,11 +1106,9 @@ Pagina de perro
   body.index .centered-section {
     margin-top: 10%;
   }
-
   body.index .centered-section img {
     max-width: 80%;
   }
-
   .mapa {
     width: 100vw;
   }
@@ -1223,7 +1248,7 @@ a.galeria{
 .resultado .centered-section p {
     font-size: 14px;
     margin-bottom: 20px;
-    width: 100%;
+    max-width: 60%;
     line-height: 18px;
 }
 

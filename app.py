@@ -73,6 +73,10 @@ def correct_image_rotation(image):
         # Get the image's EXIF data
         exif = image._getexif()
 
+        # If there's no EXIF data, return the image as it is
+        if exif is None:
+            return image
+
         # Check for the existence of the orientation tag
         for orientation in ExifTags.TAGS.keys():
             if ExifTags.TAGS[orientation] == 'Orientation':
@@ -95,7 +99,7 @@ def correct_image_rotation(image):
             image = image.rotate(90, expand=True)
 
     except (AttributeError, KeyError, IndexError):
-        # If there's an issue with the image's EXIF data or the orientation tag doesn't exist, do nothing
+        # If there's an issue with the image's EXIF data or the orientation tag doesn't exist, return the image as it is
         pass
 
     return image

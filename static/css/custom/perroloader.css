@@ -632,3 +632,9 @@ body#loader  {
   box-sizing: border-box;
   position: relative;
 }
+
+@media only screen and (max-width: 520px) {
+  [class=🐕] {
+    transform: scale(0.5);
+  }
+}
