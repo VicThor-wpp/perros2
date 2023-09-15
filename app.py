@@ -6,6 +6,19 @@ from datetime import datetime
 import pyheif
 import random
 import os
+import logging
+from logging.handlers import RotatingFileHandler
+
+app = Flask(__name__)
+
+logging.basicConfig(level=logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+
+handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=3)
+handler.setLevel(logging.DEBUG)
+handler.setFormatter(formatter)
+
+app.logger.addHandler(handler)
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -130,10 +143,15 @@ def vermas():
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
+    app.logger.info('Upload endpoint hit')
+
     # Check if the request method is POST
     if request.method == 'POST':
+
+        app.logger.info('Processing POST request')
         # Check if there's no file in the request or if the filename is empty
         if 'file' not in request.files or request.files['file'].filename == '':
+            app.logger.warning('No file part in request or filename is empty')
             return redirect(request.url)
 
         # Get the uploaded file from the request
@@ -142,8 +160,11 @@ def upload():
         filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filename)
 
+        app.logger.info(f'File saved as {filename}')
+
         # Resize and compress the saved image
         resize_and_compress_image_from_path(filename)
+        app.logger.info(f'File resized and compressed: {filename}')
 
         # Generate a new filename
         new_filename = generate_new_filename(filename)
@@ -152,8 +173,15 @@ def upload():
         # Rename the file
         os.rename(filename, new_filepath)
 
+        app.logger.info(f'File renamed to {new_filepath}')
+
         # Analyze the image using DeepFace
-        result = DeepFace.analyze(new_filepath)
+        try:
+            result = DeepFace.analyze(new_filepath)
+            app.logger.info('DeepFace analysis successful')
+        except Exception as e:
+            app.logger.error(f'Error during DeepFace analysis: {str(e)}')
+            raise e
 
         # Define the dogs data (ID, attributes, name, description)
         dogs = {
@@ -179,26 +207,25 @@ def upload():
             20: (2, 7, 6, 'Kala', 'Galga, abandonada. Fue abandonada en el portón con un cable en la garganta. Camina, pero no corre por distensión en sus patitas traseras. Es muy cariñosa, juguetona y dulce.')
             }
         
-        # Extract attributes from the DeepFace result
         attributes = extract_attributes(result[0])
-        print(attributes)
-        # Find the most similar dog ID based on the attributes
+        app.logger.info(f'Extracted attributes: {attributes}')
+
         most_similar_dog_id = compare(attributes, dogs)
-        print(most_similar_dog_id)
-        # Get the most similar dog's data
+        app.logger.info(f'Most similar dog ID: {most_similar_dog_id}')
+
         most_similar_dog = dogs[most_similar_dog_id]
-        print(most_similar_dog)
+        app.logger.info(f'Most similar dog data: {most_similar_dog}')
 
         # Render the result template with the uploaded image URL, dog image URL, dog name, and dog description
         return render_template(
             'resultado.html', 
-            uploaded_img_url = url_for('static', filename=f'uploads/{new_filename}'),
-            dog_img_url = url_for('static', filename=f'perritos/{most_similar_dog_id}.jpg'),
+            uploaded_img_url=url_for('static', filename=f'uploads/{new_filename}'),
+            dog_img_url=url_for('static', filename=f'perritos/{most_similar_dog_id}.jpg'),
             dog_name=most_similar_dog[3], 
             dog_description=most_similar_dog[4]
         )
 
-    # If the request method is not POST, render the upload template
+    app.logger.info('Rendering upload template')
     return render_template('upload.html')
 
 # Run the Flask app
