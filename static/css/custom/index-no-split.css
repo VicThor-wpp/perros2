@@ -897,7 +897,8 @@ Pagina de perro
 
 .objetosanimados #estrellaw{
     position: fixed;
-
+    top: 200px;
+    right: -10px;
     width: 120px;
     transition: 0.70s;
     -webkit-transition: 0.70s;
@@ -928,6 +929,9 @@ Pagina de perro
     -moz-transition: 0.70s;
     -ms-transition: 0.70s;
     -o-transition: 0.70s;background-color: #68cad1;
+}
+
+    .objetosanimados #circulosamarillos{    
     position: fixed;
     right: -30px;
     bottom: 200px;
