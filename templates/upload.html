@@ -18,7 +18,7 @@
         <div id="miniaturaContainer">
             <h2>Subí tu foto</h2>
             <img id="miniatura" class="thumbnail" src="" alt="Miniatura de imagen" style="display: none;">
-            <button type="submit" disabled class="disabled">Buscá tu perrro</button>
+            <button type="submit" id="searchDogButton" disabled class="disabled">Buscá tu perro</button>
         </div>
     </form>
 </div>
@@ -54,5 +54,10 @@
             document.querySelector("button[type='submit']").disabled = true;  // Disable the submit button
         }
     }
+    function showLoader() {
+        const loader = document.getElementById('loader');
+        loader.style.display = '';
+    }
+    document.getElementById('searchDogButton').addEventListener('click', showLoader);
 </script>
 {% endblock %}
