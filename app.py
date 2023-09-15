@@ -1,7 +1,7 @@
 # Import necessary libraries and modules
 from flask import Flask, render_template, request, redirect, url_for
 from deepface import DeepFace
-from PIL import Image
+from PIL import Image, ExifTags
 from datetime import datetime
 import pyheif
 import random
@@ -68,6 +68,38 @@ def compare(attributes, dogs):
 from PIL import Image
 import pyheif
 
+def correct_image_rotation(image):
+    try:
+        # Get the image's EXIF data
+        exif = image._getexif()
+
+        # Check for the existence of the orientation tag
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation] == 'Orientation':
+                break
+
+        # Rotate the image according to the orientation tag value
+        if exif[orientation] == 2:
+            image = image.transpose(Image.FLIP_LEFT_RIGHT)
+        elif exif[orientation] == 3:
+            image = image.rotate(180)
+        elif exif[orientation] == 4:
+            image = image.rotate(180).transpose(Image.FLIP_LEFT_RIGHT)
+        elif exif[orientation] == 5:
+            image = image.rotate(-90, expand=True).transpose(Image.FLIP_LEFT_RIGHT)
+        elif exif[orientation] == 6:
+            image = image.rotate(-90, expand=True)
+        elif exif[orientation] == 7:
+            image = image.rotate(90, expand=True).transpose(Image.FLIP_LEFT_RIGHT)
+        elif exif[orientation] == 8:
+            image = image.rotate(90, expand=True)
+
+    except (AttributeError, KeyError, IndexError):
+        # If there's an issue with the image's EXIF data or the orientation tag doesn't exist, do nothing
+        pass
+
+    return image
+
 def resize_and_compress_image_from_path(image_path):
     # Check if the image is in .heic format
     if image_path.lower().endswith(".heic"):
@@ -84,20 +116,20 @@ def resize_and_compress_image_from_path(image_path):
         # Open the image with Pillow
         img = Image.open(image_path)
 
+    # Correct the image orientation based on its EXIF data
+    img = correct_image_rotation(img)
+
     # Save the image with compression
     img.save(image_path, "JPEG", quality=75)
 
-# Function to generate a new filename for an image based on its dimensions and current timestamp
-def generate_new_filename(image_path):
-    # Open the image to fetch its dimensions
-    img = Image.open(image_path)
-    width, height = img.size
 
+# Function to generate a new filename for an image based on the current timestamp
+def generate_new_filename(image_path):
     # Get the current timestamp
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')  # Produces format like "20230913170550"
     
-    # Combine the timestamp and dimensions to generate the new filename
-    new_filename = f"{timestamp}_{width}x{height}.jpg"
+    # Use the timestamp to generate the new filename
+    new_filename = f"{timestamp}.jpg"
     
     return new_filename
 
@@ -163,11 +195,10 @@ def upload():
 
         # Analyze the image using DeepFace
         try:
-            result = DeepFace.analyze(new_filepath)
-            app.logger.info('DeepFace analysis successful')
-        except Exception as e:
-            app.logger.error(f'Error during DeepFace analysis: {str(e)}')
-            raise e
+            result = DeepFace.analyze(new_filepath, enforce_detection=False)
+        except ValueError as e:
+            app.logger.error(f"Face detection error: {str(e)}")
+            return render_template('error.html', message="Face could not be detected in the image. Please upload a clear frontal face photo.")
 
         # Define the dogs data (ID, attributes, name, description)
         dogs = {
