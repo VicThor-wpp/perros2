@@ -223,7 +223,6 @@ p {
 CONTACTO
 ================================================================== */
 body.contacto .header-container{
-    position: absolute;
 }
 
 #contenedorcontacto{
@@ -338,7 +337,7 @@ display: inline-flex;
 header {
     background-color: transparent;
     color: #FFFFFF;
-    display: flex;
+    display: flex;background-color: #68cad1;
     padding: 5px 50px;
     border-radius: 25px;
     box-sizing: border-box;
@@ -379,7 +378,7 @@ nav ul {
     list-style-type: none;
     padding: 0;
 }
-
+background-color: #68cad1;
 nav li {
     display: inline;
     margin: 0 15px;
@@ -410,7 +409,7 @@ form {
 
 label {
     display: block;
-    font-size: 18px;
+    font-size: 18px;background-color: #68cad1;
     margin-bottom: 10px;
 }
 .container {
@@ -430,12 +429,7 @@ label {
 }
 
 .column {
-    position: relative;
-    margin: 0 10px; /* Espacio entre las columnas */
-}
-
-/* Estilos para las imágenes circulares */
-.circular-image {
+    position: relative;background-color: #68cad1;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -934,10 +928,7 @@ Pagina de perro
     -webkit-transition: 0.70s;
     -moz-transition: 0.70s;
     -ms-transition: 0.70s;
-    -o-transition: 0.70s;
-}
-
-.objetosanimados #circulosamarillos{
+    -o-transition: 0.70s;background-color: #68cad1;
     position: fixed;
     right: -30px;
     bottom: 200px;
@@ -1080,14 +1071,15 @@ Pagina de perro
     color: #ffffff;
   }
   .formulariocontacto {
-    padding: 20% 10%;
+    padding: 0% 10% 15% 10%;
   }
   footer {
     padding: 10px 30px;
   }    
   #requisitos {
     height: auto;
-    padding: 10% 10% 30% 10%;
+    padding: 0 10% 30% 10%;
+    background-color: #69cad1;
   } 
   #vermas {
     height: auto;
@@ -1120,6 +1112,7 @@ Pagina de perro
   }
   .formulariocontacto{
     width: 100vw;
+    background-color: #68cad1;
   }    
   body{
     font-size: 14px;
