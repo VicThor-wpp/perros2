@@ -21,6 +21,7 @@
   height: 300px;
   width: 300px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -636,4 +637,18 @@ body#loader  {
   [class=🐕] {
     transform: scale(0.5);
   }
+}
+
+#dog-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#loading-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d3d3d3;
+  text-align: center;
+  margin-top: 20px;
 }

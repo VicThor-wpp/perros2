@@ -139,10 +139,6 @@ def generate_new_filename(image_path):
 
 # Define the index route for the Flask app
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
 @app.route('/colabora')
 def colabora():
     return render_template('colabora.html')
@@ -163,6 +159,7 @@ def contacto():
 def vermas():
     return render_template('vermas.html')
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     app.logger.info('Upload endpoint hit')

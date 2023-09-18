@@ -721,11 +721,6 @@ body.contacto .menu a {
     border-radius: 25px;
 }
 
-.centered-section button:hover {
-    background-color: #222;
-    /* Cambia de color al pasar el cursor sobre el botón */
-}
-
 .disabled {
     background-color: #382f38ba !important;
     color: white;
@@ -786,6 +781,7 @@ body.contacto .menu a {
     height: 100vh;
     background-color: #ae12ab;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -1384,4 +1380,13 @@ Pagina de perro
 
 input[type="submit"] {
     cursor: pointer;
+}
+
+.disabled {
+    background-color: grey; /* Or any color you prefer for the disabled state */
+    cursor: not-allowed;   /* Change cursor to indicate button is disabled */
+}
+
+.enabled {
+    background-color: #ae12ab; /* Or any color you prefer for the enabled state */
 }

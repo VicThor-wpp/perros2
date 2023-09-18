@@ -33,6 +33,7 @@
         const miniatura = document.getElementById("miniatura");
         const miniaturaContainer = document.getElementById("miniaturaContainer");
         const customUploadButton = document.getElementById("customUploadButton");
+        const searchDogButton = document.getElementById('searchDogButton');
 
         if (input.files && input.files[0]) {
             const reader = new FileReader();
@@ -46,12 +47,18 @@
 
             reader.readAsDataURL(input.files[0]);
             document.querySelector("button[type='submit']").disabled = false;  // Enable the submit button
+            searchDogButton.classList.remove('disabled');  // Remove the 'disabled' class
+            searchDogButton.classList.add('enabled');      // Add the 'enabled' class
+            searchDogButton.removeAttribute('disabled');  // Remove the 'disabled' attribute
         } else {
             miniatura.src = "";
             miniaturaContainer.style.display = "none";
             icono.style.display = "none";
             customUploadButton.style.backgroundImage = "";
             document.querySelector("button[type='submit']").disabled = true;  // Disable the submit button
+            searchDogButton.classList.remove('enabled');   // Remove the 'enabled' class
+            searchDogButton.classList.add('disabled');     // Add the 'disabled' class
+            searchDogButton.setAttribute('disabled', '');  // Add the 'disabled' attribute
         }
     }
     function showLoader() {
