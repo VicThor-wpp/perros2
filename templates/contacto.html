@@ -9,7 +9,7 @@
         <div class="formulariocontacto">
             <p>A continuación llena los campos de este formulario para contactarnos y comenzar con el proceso de adopción.</p>
 
-            <form action="https://script.google.com/macros/s/AKfycbwMBTxK4WqW_zAMyiyQqQpWUs-ts0PKpjguGmOLg4271oQ3DR5EPaeLoaR_-NHgokFt/exec" method="post" id="adoptionForm">
+            <form onsubmit="submitAdoptionForm(event)" method="post" id="adoptionForm">
             <div class="camposform">
                 <label for="name">Nombre:</label>
                 <input type="text" id="name" name="name" required>
@@ -51,9 +51,21 @@
 
     </div> 
 
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+  
+          <span class="close">&times;</span>
+  
+          <p id="modalMessage">Some default message</p>
+  
+        </div>
+  
+      </div>
 
 {% endblock %}
 
 {% block scripts_extra %}
 <script src="{{url_for('static', filename='js/contacto.js')}}"></script>
+<script src="{{url_for('static', filename='js/savecontactodata.js')}}"></script>
 {% endblock %}
