@@ -65,8 +65,7 @@ def compare(attributes, dogs):
     return random.choice([dog_id for dog_id, score in similarities if score == min_score])
 
 # Function to resize and compress an image from a given path
-from PIL import Image
-import pyheif
+
 
 def correct_image_rotation(image):
     try:
@@ -104,7 +103,24 @@ def correct_image_rotation(image):
 
     return image
 
-def resize_and_compress_image_from_path(image_path):
+def resize_image_to_long_side(img, target_long_side=1024):
+    # Get the image dimensions
+    width, height = img.size
+
+    # Determine the scaling factor based on the long side
+    if width > height:
+        scaling_factor = target_long_side / width
+    else:
+        scaling_factor = target_long_side / height
+
+    # Calculate the new dimensions
+    new_width = int(width * scaling_factor)
+    new_height = int(height * scaling_factor)
+
+    # Resize the image using LANCZOS filter
+    return img.resize((new_width, new_height), Image.LANCZOS)
+
+def resize_and_compress_image_from_path_updated(image_path):
     # Check if the image is in .heic format
     if image_path.lower().endswith(".heic"):
         heif_file = pyheif.read(image_path)
@@ -122,6 +138,10 @@ def resize_and_compress_image_from_path(image_path):
 
     # Correct the image orientation based on its EXIF data
     img = correct_image_rotation(img)
+
+    # Resize the image if its long side is more than 1024
+    if max(img.size) > 1024:
+        img = resize_image_to_long_side(img)
 
     # Save the image with compression
     img.save(image_path, "JPEG", quality=75)
@@ -182,7 +202,7 @@ def upload():
         app.logger.info(f'File saved as {filename}')
 
         # Resize and compress the saved image
-        resize_and_compress_image_from_path(filename)
+        resize_and_compress_image_from_path_updated(filename)
         app.logger.info(f'File resized and compressed: {filename}')
 
         # Generate a new filename
