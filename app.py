@@ -143,7 +143,7 @@ def generate_new_filename(image_path):
 def colabora():
     return render_template('colabora.html')
 
-@app.route('/perros-en-adopcion')
+@app.route('/galeria')
 def adopcion():
     return render_template('perros-en-adopcion.html')
 
