@@ -1,22 +1,25 @@
 @charset "UTF-8";
-#loader, #loader:root {
+#loader,
+#loader:root {
   --color-fur: #fff;
   --color-fur-dark: #f8e3e3;
   --color-spot: #8b6465;
   --color-snout: black;
   --color-collar: #69cad1;
-  --duration: .7s;
+  --duration: 0.7s;
   --semi-duration: calc(var(--duration) / 2);
-  --easing: cubic-bezier(.5, 0, .5, 1);
+  --easing: cubic-bezier(0.5, 0, 0.5, 1);
   --stagger: calc(-1 * var(--semi-duration) / 2);
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -webkit-animation-timing-function: var(--easing) !important;
-          animation-timing-function: var(--easing) !important;
+  animation-timing-function: var(--easing) !important;
 }
 
-#loader [class=🐕] {
+#loader [class="🐕"] {
   z-index: 1;
   height: 300px;
   width: 300px;
@@ -25,11 +28,11 @@
   justify-content: center;
   align-items: center;
 }
-#loader [class=🐕] * {
+#loader [class="🐕"] * {
   position: absolute;
   will-change: transform;
 }
-#loader [class=🐕]:before {
+#loader [class="🐕"]:before {
   content: "";
   position: absolute;
   bottom: 13.3333333333%;
@@ -39,21 +42,25 @@
   background-color: #810e7f8f;
   border-radius: 2px;
   -webkit-animation: shadow calc(1 * var(--semi-duration)) infinite;
-          animation: shadow calc(1 * var(--semi-duration)) infinite;
+  animation: shadow calc(1 * var(--semi-duration)) infinite;
 }
 @-webkit-keyframes shadow {
-  from, to {
+  from,
+  to {
     transform: scaleX(0.75);
   }
-  45%, 55% {
+  45%,
+  55% {
     transform: scaleX(0.5);
   }
 }
 @keyframes shadow {
-  from, to {
+  from,
+  to {
     transform: scaleX(0.75);
   }
-  45%, 55% {
+  45%,
+  55% {
     transform: scaleX(0.5);
   }
 }
@@ -92,12 +99,14 @@
   left: -5px;
   bottom: 30px;
   border-radius: 5px;
-  -webkit-animation: collar var(--semi-duration) calc(var(--semi-duration) / 4) infinite;
-          animation: collar var(--semi-duration) calc(var(--semi-duration) / 4) infinite;
+  -webkit-animation: collar var(--semi-duration) calc(var(--semi-duration) / 4)
+    infinite;
+  animation: collar var(--semi-duration) calc(var(--semi-duration) / 4) infinite;
   z-index: 2;
 }
 @-webkit-keyframes collar {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   50% {
@@ -105,7 +114,8 @@
   }
 }
 @keyframes collar {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   50% {
@@ -123,10 +133,11 @@
   top: 110%;
   transform-origin: center top;
   -webkit-animation: tag var(--semi-duration) infinite both;
-          animation: tag var(--semi-duration) infinite both;
+  animation: tag var(--semi-duration) infinite both;
 }
 @-webkit-keyframes tag {
-  from, to {
+  from,
+  to {
     transform: rotate(-15deg);
   }
   50% {
@@ -134,7 +145,8 @@
   }
 }
 @keyframes tag {
-  from, to {
+  from,
+  to {
     transform: rotate(-15deg);
   }
   50% {
@@ -149,11 +161,13 @@
   bottom: 50%;
   transform-origin: left center;
   z-index: 2;
-  -webkit-animation: head var(--semi-duration) calc(var(--semi-duration) / 4) infinite;
-          animation: head var(--semi-duration) calc(var(--semi-duration) / 4) infinite;
+  -webkit-animation: head var(--semi-duration) calc(var(--semi-duration) / 4)
+    infinite;
+  animation: head var(--semi-duration) calc(var(--semi-duration) / 4) infinite;
 }
 @-webkit-keyframes head {
-  from, to {
+  from,
+  to {
     transform: rotate(-10deg);
   }
   50% {
@@ -161,7 +175,8 @@
   }
 }
 @keyframes head {
-  from, to {
+  from,
+  to {
     transform: rotate(-10deg);
   }
   50% {
@@ -215,7 +230,7 @@
   transform-origin: left bottom;
   transform: rotate(-10deg);
   -webkit-animation: ear-front calc(var(--duration) / 2) infinite;
-          animation: ear-front calc(var(--duration) / 2) infinite;
+  animation: ear-front calc(var(--duration) / 2) infinite;
 }
 @-webkit-keyframes ear-front {
   50% {
@@ -241,11 +256,14 @@
   border-style: solid;
   border-left: 2px solid var(--color-snout);
   transform-origin: bottom left;
-  -webkit-animation: ear-mark var(--semi-duration) calc(-1 * var(--semi-duration)) infinite;
-          animation: ear-mark var(--semi-duration) calc(-1 * var(--semi-duration)) infinite;
+  -webkit-animation: ear-mark var(--semi-duration)
+    calc(-1 * var(--semi-duration)) infinite;
+  animation: ear-mark var(--semi-duration) calc(-1 * var(--semi-duration))
+    infinite;
 }
 @-webkit-keyframes ear-mark {
-  from, to {
+  from,
+  to {
     transform: rotate(0deg);
   }
   50% {
@@ -253,7 +271,8 @@
   }
 }
 @keyframes ear-mark {
-  from, to {
+  from,
+  to {
     transform: rotate(0deg);
   }
   50% {
@@ -272,10 +291,11 @@
   --color: var(--color-fur);
   z-index: -1;
   -webkit-animation: ear-back calc(var(--duration) / 2) infinite both;
-          animation: ear-back calc(var(--duration) / 2) infinite both;
+  animation: ear-back calc(var(--duration) / 2) infinite both;
 }
 @-webkit-keyframes ear-back {
-  from, to {
+  from,
+  to {
     transform: rotate(0deg);
   }
   50% {
@@ -283,7 +303,8 @@
   }
 }
 @keyframes ear-back {
-  from, to {
+  from,
+  to {
     transform: rotate(0deg);
   }
   50% {
@@ -335,10 +356,11 @@
   width: 56.6666666667%;
   height: 33.3333333333%;
   -webkit-animation: torso var(--semi-duration) both infinite;
-          animation: torso var(--semi-duration) both infinite;
+  animation: torso var(--semi-duration) both infinite;
 }
 @-webkit-keyframes torso {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   50% {
@@ -346,7 +368,8 @@
   }
 }
 @keyframes torso {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   50% {
@@ -382,11 +405,14 @@
   border-radius: 50%;
   background-color: var(--color-spot);
   z-index: 1;
-  -webkit-animation: spot var(--duration) calc(-1 * var(--semi-duration)) both infinite;
-          animation: spot var(--duration) calc(-1 * var(--semi-duration)) both infinite;
+  -webkit-animation: spot var(--duration) calc(-1 * var(--semi-duration)) both
+    infinite;
+  animation: spot var(--duration) calc(-1 * var(--semi-duration)) both infinite;
 }
 @-webkit-keyframes spot {
-  from, 66%, to {
+  from,
+  66%,
+  to {
     transform: none;
   }
   33% {
@@ -394,7 +420,9 @@
   }
 }
 @keyframes spot {
-  from, 66%, to {
+  from,
+  66%,
+  to {
     transform: none;
   }
   33% {
@@ -426,10 +454,11 @@
   border-top-right-radius: 10px 100%;
   border-top-left-radius: 10px 100%;
   -webkit-animation: tail var(--semi-duration) infinite;
-          animation: tail var(--semi-duration) infinite;
+  animation: tail var(--semi-duration) infinite;
 }
 @-webkit-keyframes tail {
-  from, to {
+  from,
+  to {
     transform: rotate(-45deg) translateX(-15%);
   }
   50% {
@@ -437,7 +466,8 @@
   }
 }
 @keyframes tail {
-  from, to {
+  from,
+  to {
     transform: rotate(-45deg) translateX(-15%);
   }
   50% {
@@ -449,10 +479,11 @@
   transform-origin: bottom left;
   transform: rotate(-10deg) translateY(50%) scaleX(0.8) scaleY(0.9);
   -webkit-animation: tail-inner var(--semi-duration) var(--stagger) infinite;
-          animation: tail-inner var(--semi-duration) var(--stagger) infinite;
+  animation: tail-inner var(--semi-duration) var(--stagger) infinite;
 }
 @-webkit-keyframes tail-inner {
-  from, to {
+  from,
+  to {
     transform: rotate(-10deg) translateY(50%) scaleX(0.8) scaleY(0.9);
   }
   50% {
@@ -460,7 +491,8 @@
   }
 }
 @keyframes tail-inner {
-  from, to {
+  from,
+  to {
     transform: rotate(-10deg) translateY(50%) scaleX(0.8) scaleY(0.9);
   }
   50% {
@@ -472,18 +504,22 @@
   bottom: 5px;
   --color: var(--color-fur);
 }
-#loader .legs > .leg:nth-child(1), #loader .legs .leg:nth-child(3) {
+#loader .legs > .leg:nth-child(1),
+#loader .legs .leg:nth-child(3) {
   right: 15px;
 }
-#loader .legs > .leg:nth-child(3), #loader .legs > .leg:nth-child(4) {
+#loader .legs > .leg:nth-child(3),
+#loader .legs > .leg:nth-child(4) {
   --color: var(--color-fur-dark);
   z-index: -1;
 }
-#loader .legs > .leg:nth-child(1), #loader .legs .leg:nth-child(4) {
+#loader .legs > .leg:nth-child(1),
+#loader .legs .leg:nth-child(4) {
   --delay: 0s;
 }
-#loader .legs > .leg:nth-child(2), #loader .legs > .leg:nth-child(3) {
-  --delay: calc(-1 * var(--duration) / 2 ) ;
+#loader .legs > .leg:nth-child(2),
+#loader .legs > .leg:nth-child(3) {
+  --delay: calc(-1 * var(--duration) / 2);
 }
 #loader .legs > .leg:nth-child(2) {
   left: 0;
@@ -499,15 +535,16 @@
   background-color: var(--color);
   transform-origin: center 5px;
   -webkit-animation: leg infinite var(--duration) var(--delay, 0s);
-          animation: leg infinite var(--duration) var(--delay, 0s);
+  animation: leg infinite var(--duration) var(--delay, 0s);
 }
 #loader .leg > .leg-inner {
   -webkit-animation: leg-inner infinite var(--duration) calc(var(--delay));
-          animation: leg-inner infinite var(--duration) calc(var(--delay));
+  animation: leg-inner infinite var(--duration) calc(var(--delay));
   transform: rotate(90deg);
 }
 @-webkit-keyframes leg-inner {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   33% {
@@ -518,7 +555,8 @@
   }
 }
 @keyframes leg-inner {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   33% {
@@ -529,7 +567,8 @@
   }
 }
 @-webkit-keyframes leg {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   33% {
@@ -540,7 +579,8 @@
   }
 }
 @keyframes leg {
-  from, to {
+  from,
+  to {
     transform: none;
   }
   33% {
@@ -613,14 +653,14 @@
 }
 
 html,
-body#loader  {
+body#loader {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-body#loader  {
+body#loader {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -634,7 +674,7 @@ body#loader  {
 }
 
 @media only screen and (max-width: 520px) {
-  [class=🐕] {
+  [class="🐕"] {
     transform: scale(0.5);
   }
 }
