@@ -1298,6 +1298,29 @@ Pagina de perro
   .logo-galeria {
     width: 50%;
   }
+  .upload-icon{
+    width: 70px;
+    height: 70px;
+  }
+  .centered-section.intro img{
+    width: 200px;
+    margin-bottom: 5px!;
+  }
+  .custom-upload {
+    width: 120px;
+    height: 120px;
+  }
+  .centered-section p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }                  
+  a.button {
+    max-width: 250px;
+  }       
+  img.imagenhumanoperro{
+    width: 70vw;
+  }
+
 }
 
 /* --- Pagina de contacto --- */
