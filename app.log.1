@@ -1,0 +1,129 @@
+2023-09-18 18:04:03,839 - INFO - Upload endpoint hit
+2023-09-18 18:04:03,839 - INFO - Rendering upload template
+2023-09-19 10:24:25,155 - INFO - Upload endpoint hit
+2023-09-19 10:24:25,155 - INFO - Rendering upload template
+2023-09-19 10:27:23,971 - INFO - Upload endpoint hit
+2023-09-19 10:27:23,971 - INFO - Rendering upload template
+2023-09-19 10:58:06,015 - INFO - Upload endpoint hit
+2023-09-19 10:58:06,015 - INFO - Rendering upload template
+2023-09-19 11:00:02,593 - INFO - Upload endpoint hit
+2023-09-19 11:00:02,593 - INFO - Rendering upload template
+2023-09-19 11:01:08,730 - INFO - Upload endpoint hit
+2023-09-19 11:01:08,731 - INFO - Rendering upload template
+2023-09-19 11:02:42,640 - INFO - Upload endpoint hit
+2023-09-19 11:02:42,640 - INFO - Rendering upload template
+2023-09-19 11:06:57,754 - INFO - Upload endpoint hit
+2023-09-19 11:06:57,754 - INFO - Rendering upload template
+2023-09-19 11:10:15,649 - INFO - Upload endpoint hit
+2023-09-19 11:10:15,649 - INFO - Rendering upload template
+2023-09-19 11:13:23,204 - INFO - Upload endpoint hit
+2023-09-19 11:13:23,204 - INFO - Rendering upload template
+2023-09-19 11:14:26,951 - INFO - Upload endpoint hit
+2023-09-19 11:14:26,951 - INFO - Rendering upload template
+2023-09-19 11:14:38,345 - INFO - Upload endpoint hit
+2023-09-19 11:14:38,345 - INFO - Rendering upload template
+2023-09-19 12:39:31,965 - INFO - Upload endpoint hit
+2023-09-19 12:39:31,965 - INFO - Rendering upload template
+2023-09-19 12:39:44,544 - INFO - Upload endpoint hit
+2023-09-19 12:39:44,544 - INFO - Processing POST request
+2023-09-19 12:39:44,548 - INFO - File saved as static/uploads/pexels-cottonbro-studio-5119214.jpg
+2023-09-19 12:39:44,776 - INFO - File resized and compressed: static/uploads/pexels-cottonbro-studio-5119214.jpg
+2023-09-19 12:39:44,776 - INFO - File renamed to static/uploads/20230919123944.jpg
+2023-09-19 12:39:50,133 - INFO - Extracted attributes: (2, 3, 6)
+2023-09-19 12:39:50,133 - INFO - Most similar dog ID: 2
+2023-09-19 12:39:50,134 - INFO - Most similar dog data: (2, 2, 5, 'Polo', 'Es adulto jóven y está castrado. 50% fila, 50% gran danés. 100% cariñoso.')
+2023-09-19 12:46:15,287 - INFO - Upload endpoint hit
+2023-09-19 12:46:15,287 - INFO - Rendering upload template
+2023-09-19 12:46:31,700 - INFO - Upload endpoint hit
+2023-09-19 12:46:31,700 - INFO - Processing POST request
+2023-09-19 12:46:31,710 - INFO - File saved as static/uploads/pexels-brandan-saviour-2741701.jpg
+2023-09-19 12:46:32,091 - INFO - File resized and compressed: static/uploads/pexels-brandan-saviour-2741701.jpg
+2023-09-19 12:46:32,092 - INFO - File renamed to static/uploads/20230919124632.jpg
+2023-09-19 12:46:40,264 - INFO - Extracted attributes: (2, 4, 6)
+2023-09-19 12:46:40,264 - INFO - Most similar dog ID: 19
+2023-09-19 12:46:40,264 - INFO - Most similar dog data: (1, 4, 6, 'Aaron', '3 meses. Va a ser un perro grande. Es muy juguetón y mimoso. Le gusta estár a upa.')
+2023-09-19 12:55:54,973 - INFO - Upload endpoint hit
+2023-09-19 12:55:54,973 - INFO - Rendering upload template
+2023-09-19 12:56:09,952 - INFO - Upload endpoint hit
+2023-09-19 12:56:09,953 - INFO - Processing POST request
+2023-09-19 12:56:09,964 - INFO - File saved as static/uploads/pexels-brandan-saviour-2741701.jpg
+2023-09-19 12:56:09,964 - ERROR - Exception on /upload [POST]
+Traceback (most recent call last):
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/victhor/experimentos/perros2/app.py", line 205, in upload
+    resize_and_compress_image_from_path(filename)
+NameError: name 'resize_and_compress_image_from_path' is not defined
+2023-09-19 12:56:57,356 - INFO - Upload endpoint hit
+2023-09-19 12:56:57,356 - INFO - Rendering upload template
+2023-09-19 12:57:04,528 - INFO - Upload endpoint hit
+2023-09-19 12:57:04,528 - INFO - Processing POST request
+2023-09-19 12:57:04,539 - INFO - File saved as static/uploads/pexels-brandan-saviour-2741701.jpg
+2023-09-19 12:57:04,541 - ERROR - Exception on /upload [POST]
+Traceback (most recent call last):
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/victhor/experimentos/perros2/app.py", line 205, in upload
+    resize_and_compress_image_from_path_updated(filename)
+  File "/home/victhor/experimentos/perros2/app.py", line 144, in resize_and_compress_image_from_path_updated
+    img = resize_image_to_long_side(img)
+  File "/home/victhor/experimentos/perros2/app.py", line 121, in resize_image_to_long_side
+    return img.resize((new_width, new_height), Image.ANTIALIAS)
+AttributeError: module 'PIL.Image' has no attribute 'ANTIALIAS'
+2023-09-19 13:02:01,369 - INFO - Upload endpoint hit
+2023-09-19 13:02:01,369 - INFO - Rendering upload template
+2023-09-19 13:02:07,518 - INFO - Upload endpoint hit
+2023-09-19 13:02:07,518 - INFO - Processing POST request
+2023-09-19 13:02:07,527 - INFO - File saved as static/uploads/pexels-brandan-saviour-2741701.jpg
+2023-09-19 13:02:08,043 - INFO - File resized and compressed: static/uploads/pexels-brandan-saviour-2741701.jpg
+2023-09-19 13:02:08,043 - INFO - File renamed to static/uploads/20230919130208.jpg
+2023-09-19 13:02:11,335 - INFO - Extracted attributes: (2, 7, 4)
+2023-09-19 13:02:11,335 - INFO - Most similar dog ID: 3
+2023-09-19 13:02:11,336 - INFO - Most similar dog data: (2, 7, 4, 'Colita', 'Huérfano. Su dueño falleció y buscaban eutanaziarlo. Pero logramos salvarlo. Está castrado, es tímido pero tiene un corazón de oro. Es el perro más bueno del refugio.')
+2023-09-19 18:28:15,459 - INFO - Upload endpoint hit
+2023-09-19 18:28:15,460 - INFO - Rendering upload template
+2023-09-19 18:28:15,468 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/victhor/experimentos/perros2/app.py", line 267, in upload
+    return render_template('upload.html')
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/home/victhor/.local/lib/python3.10/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/victhor/.local/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/victhor/experimentos/perros2/templates/upload.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/victhor/experimentos/perros2/templates/base.html", line 201, in top-level template code
+    <li><a href="{{ url_for('galeria') }}">Perros en adopción</a></li>
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1697, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/home/victhor/.local/lib/python3.10/site-packages/flask/app.py", line 1686, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/home/victhor/.local/lib/python3.10/site-packages/werkzeug/routing/map.py", line 947, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'galeria'. Did you mean 'vermas' instead?
+2023-09-19 18:28:44,945 - INFO - Upload endpoint hit
+2023-09-19 18:28:44,945 - INFO - Rendering upload template

@@ -164,7 +164,7 @@ def colabora():
     return render_template('colabora.html')
 
 @app.route('/galeria')
-def adopcion():
+def galeria():
     return render_template('perros-en-adopcion.html')
 
 @app.route('/requisitos')

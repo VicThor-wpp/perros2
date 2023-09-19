@@ -232,7 +232,6 @@ CONTACTO
 
 .formulariocontacto {
   width: 50vw;
-  height: 100%;
   padding: 10%;
 }
 
@@ -286,7 +285,7 @@ a.button:before {
 }
 
 #requisitos {
-  padding: 5% 10%;
+  padding: 5% 10% 15% 10%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -402,7 +401,8 @@ a.galeria {
 }
 
 .centered-section.intro {
-  margin-top: 4%;
+  padding-top: 1%;
+  padding-bottom: 15%;
 }
 
 form {
