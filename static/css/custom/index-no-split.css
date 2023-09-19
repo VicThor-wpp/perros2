@@ -680,7 +680,6 @@ body.contacto .menu a {
 
 .centered-section {
   text-align: center;
-  overflow: scroll;
   position: absolute;
   width: 100%;
   display: flex;
@@ -1326,6 +1325,19 @@ Pagina de perro
   #loading-text {
     margin-top: 5px;
     padding: 0 35px;
+  }
+  body.adopcion{
+    padding-bottom: 10%;
+  }
+  body.adopcion .centered-section img{
+      width: 200px;
+  }
+  .resultado .centered-section p{
+      max-width: 75%;
+  }
+  #loading-text {
+      font-size: 20px;
+      line-height: 24px;
   }
 }
 
