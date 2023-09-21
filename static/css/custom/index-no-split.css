@@ -1065,7 +1065,11 @@ Pagina de perro
   body.contacto .header-container {
     position: absolute;
   }
-
+  
+  body.resultado.upload .centered-section {
+    padding-bottom: 15%;
+  }
+  
   .imagenhumanoperro {
     margin-top: 0 !important;
   }

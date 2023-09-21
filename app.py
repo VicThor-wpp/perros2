@@ -3,11 +3,15 @@ from flask import Flask, render_template, request, redirect, url_for
 from deepface import DeepFace
 from PIL import Image, ExifTags
 from datetime import datetime
+from logging.handlers import RotatingFileHandler
+
 import pyheif
 import random
 import os
 import logging
-from logging.handlers import RotatingFileHandler
+import sqlite3
+
+DATABASE = 'matches.db'
 
 app = Flask(__name__)
 
@@ -34,6 +38,41 @@ CATEGORIES = {
 
 # Define weights for each category
 WEIGHTS = {'age': 0.35, 'emotion': 0.40, 'race': 0.25}
+
+def setup_database():
+    with sqlite3.connect(DATABASE) as conn:
+        cursor = conn.cursor()
+        
+        # Create the table if it doesn't exist
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS matches (
+            id INTEGER PRIMARY KEY,
+            datetime TEXT,
+            human_age TEXT,
+            human_emotion TEXT,
+            human_race TEXT,
+            human_photo_filepath TEXT,
+            dog_age TEXT,
+            dog_emotion TEXT,
+            dog_race TEXT,
+            dog_photo_filepath TEXT
+        )
+        ''')
+        
+        conn.commit()
+        print("Database setup completed and 'matches' table is ready.")
+
+
+def insert_into_database(data):
+    with sqlite3.connect(DATABASE) as conn:
+        cursor = conn.cursor()
+
+        cursor.execute('''
+        INSERT INTO matches (datetime, human_age, human_emotion, human_race, human_photo_filepath, dog_age, dog_emotion, dog_race, dog_photo_filepath)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', data)
+
+        conn.commit()
 
 # Function to extract attributes from DeepFace result
 def extract_attributes(result):
@@ -214,12 +253,12 @@ def upload():
 
         app.logger.info(f'File renamed to {new_filepath}')
 
-        # Analyze the image using DeepFace
+        # Try analyzing the image with face detection enforced
         try:
-            result = DeepFace.analyze(new_filepath, enforce_detection=False)
+            result = DeepFace.analyze(new_filepath, enforce_detection=True)
         except ValueError as e:
-            app.logger.error(f"Face detection error: {str(e)}")
-            return render_template('error.html', message="Face could not be detected in the image. Please upload a clear frontal face photo.")
+            app.logger.error(f"Face detection error: {str(e)}")# Here, we're sending the error_face_detection flag to the template
+            return render_template('upload.html', error_face_detection=True)
 
         # Define the dogs data (ID, attributes, name, description)
         dogs = {
@@ -254,6 +293,23 @@ def upload():
         most_similar_dog = dogs[most_similar_dog_id]
         app.logger.info(f'Most similar dog data: {most_similar_dog}')
 
+        #SQLite
+        
+        data_to_insert = (
+
+            datetime.now().strftime('%Y-%m-%d %H:%M:%S'),  # Current datetime
+            CATEGORIES['age'][attributes[0]],  # Human Age
+            CATEGORIES['emotion'][attributes[1]],  # Human Emotion
+            CATEGORIES['race'][attributes[2]],  # Human Race
+            new_filepath,  # Human Photo filepath
+            CATEGORIES['age'][most_similar_dog[0]],  # Dog Age
+            CATEGORIES['emotion'][most_similar_dog[1]],  # Dog Emotion
+            CATEGORIES['race'][most_similar_dog[2]],  # Dog Race
+            f'static/perritos/{most_similar_dog_id}.jpg'  # Dog photo filepath
+        )
+
+        insert_into_database(data_to_insert)
+
         # Render the result template with the uploaded image URL, dog image URL, dog name, and dog description
         return render_template(
             'resultado.html', 
@@ -268,4 +324,5 @@ def upload():
 
 # Run the Flask app
 if __name__ == '__main__':
+    setup_database()
     app.run(debug=False)    

@@ -1,5 +1,8 @@
 static/uploads/*
 
+app.log*
+matches.db
+
 # Byte-compiled / optimized / DLL files
 __pycache__/*
 *.py[cod]
