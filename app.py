@@ -4,6 +4,10 @@ from deepface import DeepFace
 from PIL import Image, ExifTags
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
+import sentry_sdk
+
+from flask import Flask
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 import pyheif
 import random
@@ -12,6 +16,19 @@ import logging
 import sqlite3
 
 DATABASE = 'matches.db'
+
+sentry_sdk.init(
+    dsn="https://5f408ebe0451d9efe0c7c68924fa5ec8@o4505920028475392.ingest.sentry.io/4505920036470784",
+    integrations=[FlaskIntegration()],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
 
 app = Flask(__name__)
 
@@ -197,6 +214,10 @@ def generate_new_filename(image_path):
     return new_filename
 
 # Define the index route for the Flask app
+
+@app.route('/debug-sentry')
+def trigger_error():
+  division_by_zero = 1 / 0
 
 @app.route('/colabora')
 def colabora():
