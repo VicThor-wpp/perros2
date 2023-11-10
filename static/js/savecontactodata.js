@@ -1,54 +1,60 @@
-function submitAdoptionForm(e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function() {
 
-  var formData = new FormData(document.getElementById("adoptionForm"));
+  document.getElementById('adoptionForm').addEventListener('submit', submitAdoptionForm);
 
-  fetch(
-    "https://script.google.com/macros/s/AKfycbwMBTxK4WqW_zAMyiyQqQpWUs-ts0PKpjguGmOLg4271oQ3DR5EPaeLoaR_-NHgokFt/exec",
-    {
-      method: "POST",
+  function submitAdoptionForm(e) {
+      let dogName = localStorage.getItem("selectedDogName");
+      e.preventDefault();
+  
+      var formData = new FormData(document.getElementById('adoptionForm'));
+  
+      fetch('https://script.google.com/macros/s/AKfycbwMBTxK4WqW_zAMyiyQqQpWUs-ts0PKpjguGmOLg4271oQ3DR5EPaeLoaR_-NHgokFt/exec', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+          // Actualizar el contenido del modal con la respuesta del servidor
+          document.getElementById('modalMessage').innerHTML = "<h3>Tus datos se enviaron correctamente</h3><br>Nos pondremos en contacto a la brevedad.<br> ¡Muchas gracias!";
 
-      body: formData,
-    }
-  )
-    .then((response) => response.text())
+          // Mostrar el modal
+          var modal = document.getElementById("myModal");
+          modal.style.display = "block";
 
-    .then((data) => {
-      // Update the modal's content with the server's response
+          // Al hacer clic en <span> (x), cerrar el modal
+          document.getElementsByClassName("close")[0].onclick = function() {
+              modal.style.display = "none";
+          }
 
-      document.getElementById("modalMessage").innerHTML =
-        "<h3>Tus datos se enviaron correctamente</h3><br>Nos pondremos en contacto a la brevedad.<br> ¡Muchas gracias!";
+          // Al hacer clic fuera del modal, cerrarlo
+          window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+              }
+          }
 
-      // Display the modal
+          // Datos para el mensaje de WhatsApp
+          let name = document.getElementById('name').value;
+          let lastname = document.getElementById('lastname').value;
+          let city = document.getElementById('city').value;
+          let phone = document.getElementById('phone').value;
 
-      var modal = document.getElementById("myModal");
+          let message = `Hola, mi nombre es ${name} ${lastname} de la ciudad de ${city}, te contacto desde https://sebuscahumano.com/. Estoy interesado en adoptar a ${dogName}. Mi número de teléfono es ${phone}. ¡Gracias!`;
+          let whatsappURL = `https://wa.me/59894767181?text=${encodeURIComponent(message)}`;
 
-      modal.style.display = "block";
+          // Abre una ventana emergente de inmediato, pero solo carga 'about:blank' por ahora
+          window.open(`${whatsappURL}`, '_blank');
 
-      // Reset the form
+          resetForm();
 
-      resetForm();
+      })
+      .catch(error => {
+          console.error('Hubo un error al enviar el formulario!', error);
+      });
+  }
 
-      // When the user clicks on <span> (x), close the modal
+  function resetForm() {
+      document.getElementById('adoptionForm').reset();
+  }
 
-      document.getElementsByClassName("close")[0].onclick = function () {
-        modal.style.display = "none";
-      };
-
-      // When the user clicks anywhere outside of the modal, close it
-
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    })
-
-    .catch((error) => {
-      console.error("There was an error submitting the form!", error);
-    });
-}
-
-function resetForm() {
-  document.getElementById("adoptionForm").reset();
-}
+});
